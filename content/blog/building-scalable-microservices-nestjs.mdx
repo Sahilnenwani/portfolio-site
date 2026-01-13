@@ -1,0 +1,36 @@
+---
+title: "Building Scalable Microservices with NestJS"
+date: "2024-11-15"
+excerpt: "A deep dive into architecting microservices using NestJS, including patterns like Outbox, event sourcing, and multi-tenant database design."
+readTime: "8 min read"
+tags: ["NestJS", "Microservices", "Architecture"]
+---
+
+# Building Scalable Microservices with NestJS
+
+Building scalable microservices is a critical skill for modern backend developers. In this article, we'll explore how to architect and implement microservices using NestJS.
+
+## Why NestJS for Microservices?
+
+NestJS provides a solid foundation for building microservices with its modular architecture, built-in dependency injection, and transport layer abstraction.
+
+## The Outbox Pattern
+
+One of the most important patterns for reliable event publishing is the Outbox Pattern...
+
+```typescript
+@Injectable()
+export class OrderService {
+  @Transactional()
+  async createOrder(dto: CreateOrderDto): Promise<Order> {
+    const order = await this.orderRepository.create(dto);
+    await this.outboxRepository.create({
+      aggregateId: order.id,
+      eventType: 'ORDER_CREATED',
+      payload: order,
+    });
+    return order;
+  }
+}
+```
+
