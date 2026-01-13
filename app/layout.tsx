@@ -1,12 +1,6 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono, Space_Grotesk, Inter } from 'next/font/google';
+import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  display: 'swap',
-});
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -64,15 +58,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${jetbrainsMono.variable} ${spaceGrotesk.variable} ${inter.variable}`}>
+    <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <meta name="theme-color" content="#0a0a0f" />
+        <link rel="icon" type="image/png" href="/icon.png" />
+        <link rel="apple-touch-icon" href="/icon.png" />
+        <meta name="theme-color" content="#0f172a" />
       </head>
-      <body className="bg-background text-zinc-100 antialiased">
-        <div className="noise-overlay">
-          {children}
-        </div>
+      <body className="bg-background text-slate-100 antialiased">
+        {children}
       </body>
     </html>
   );

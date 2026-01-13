@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: "Sahil Nenwani",
-  title: "Full Stack Developer",
-  tagline: "Backend Specialist | Distributed Systems | Cloud Architecture",
+  title: "Full Stack Software Engineer",
+  tagline: "Backend Specialist | Cloud-Native Architecture | AI & LLM Explorer",
   email: "sahilnenwani03@gmail.com",
   phone: "+923042266591",
   location: "Karachi, Pakistan",
@@ -9,9 +9,11 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/sahilnenwani/",
   twitter: "https://x.com/NenwaniSah7402",
   medium: "https://medium.com/@SahilNenwani",
-  bio: `I'm a Full Stack Developer with over 4 years of experience, specializing in backend systems and distributed architectures. I build and maintain scalable systems using Node.js with NestJS and Express.js, and I have professional experience with Go (Gin framework) for creating fast, performant services.
+  bio: `I am a Full-stack Software Engineer dedicated to building secure, scalable, and cloud-native applications. While I possess a comprehensive view of the stack including Angular, my primary focus is on engineering robust backend systems using Node.js (NestJS, Express) and Go.
 
-I enjoy solving complex problems, optimizing performance, and making systems run smoothly under load. From REST & GraphQL APIs to ETL pipelines, Kafka event streaming, and Kubernetes deployments—I love working across the entire stack.`,
+My approach to cloud infrastructure goes beyond deployment; I design distributed architectures that prioritize resilience and operational efficiency. Specializing in the AWS ecosystem, I orchestrate containerized workloads using ECS Fargate and Kubernetes to ensure systems can scale dynamically with demand. I focus heavily on decoupling complex logic, utilizing event-driven patterns with Kafka and SQS to transform rigid monolithic structures into flexible, highly available microservices.
+
+Beyond infrastructure, I bring experience in ETL data processing and analytics integration, enabling data-driven decision-making through tools like Metabase. Currently, I am expanding my scope to advanced backend initiatives that incorporate AI agents and LLM. I am actively exploring the implementation of RAG pipelines and intelligent workflows using LangChain and MCP, seeking to leverage my software engineering background to ground AI responses in reliable business data.`,
 };
 
 export const stats = [
@@ -74,6 +76,10 @@ export const skills = {
       "Microservices",
     ],
   },
+  ai: {
+    title: "AI & LLM",
+    items: ["LangChain", "LangGraph", "RAG", "MCP"],
+  },
 };
 
 export const experience = [
@@ -85,6 +91,16 @@ export const experience = [
     location: "Pakistan",
     period: "Oct 2024 - Present",
     achievements: [
+      {
+        title: "Intelligent OCR & Product Mapping Engine",
+        description:
+          "Revamped the purchase invoice OCR system by implementing a hybrid search strategy using SQL and Elasticsearch. Engineered logic to persist user mappings in SQL for auto-associating recurring products, while utilizing Elasticsearch fuzzy matching to provide 'top 3' suggestions for unmapped items. Delivered the end-to-end solution using Angular and NestJS.",
+      },
+      {
+        title: "Internal Tooling & Async Architecture",
+        description:
+          "Co-developed a generalized internal Elasticsearch NPM package to standardize search implementations across microservices. Engineered the solution on a fully asynchronous, decoupled architecture using AWS SQS to ensure high availability, while implementing a scoped data migration strategy to handle bulk historical data directly, preventing event bus saturation.",
+      },
       {
         title: "Migration of Legacy Service",
         description:
@@ -261,7 +277,7 @@ export const blogPosts = [
     title: "Read My Articles on Medium",
     excerpt:
       "Explore my technical articles on backend development, distributed systems, microservices architecture, and cloud solutions.",
-    date: new Date().toISOString().split("T")[0],
+    date: "2024-01-01",
     readTime: "Various",
     tags: ["Medium", "Articles", "Technical Writing"],
     type: "medium",
@@ -272,7 +288,7 @@ export const blogPosts = [
     title: "Follow My Tech Insights on Twitter",
     excerpt:
       "Get quick tips, learnings, and thoughts on backend engineering, system design, and the latest in distributed systems.",
-    date: new Date().toISOString().split("T")[0],
+    date: "2024-01-01",
     readTime: "Quick reads",
     tags: ["Twitter", "Tech Tips", "Insights"],
     type: "twitter",

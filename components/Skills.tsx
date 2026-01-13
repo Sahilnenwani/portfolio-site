@@ -11,6 +11,7 @@ import {
   Wrench
 } from 'lucide-react';
 import { skills } from '@/lib/data';
+import { Sparkles } from 'lucide-react';
 
 const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   languages: Code2,
@@ -18,33 +19,39 @@ const categoryIcons: Record<string, React.ComponentType<{ className?: string }>>
   databases: Database,
   cloud: Cloud,
   tools: Wrench,
+  ai: Sparkles,
 };
 
 const categoryColors: Record<string, { border: string; bg: string; text: string }> = {
   languages: { 
-    border: 'border-terminal-green/20 group-hover:border-terminal-green/50', 
-    bg: 'bg-terminal-green/10',
-    text: 'text-terminal-green'
+    border: 'border-accent-primary/20 group-hover:border-accent-primary/50', 
+    bg: 'bg-accent-primary/10',
+    text: 'text-accent-primary'
   },
   frameworks: { 
-    border: 'border-terminal-cyan/20 group-hover:border-terminal-cyan/50', 
-    bg: 'bg-terminal-cyan/10',
-    text: 'text-terminal-cyan'
+    border: 'border-accent-tertiary/20 group-hover:border-accent-tertiary/50', 
+    bg: 'bg-accent-tertiary/10',
+    text: 'text-accent-tertiary'
   },
   databases: { 
-    border: 'border-terminal-amber/20 group-hover:border-terminal-amber/50', 
-    bg: 'bg-terminal-amber/10',
-    text: 'text-terminal-amber'
+    border: 'border-accent-gold/20 group-hover:border-accent-gold/50', 
+    bg: 'bg-accent-gold/10',
+    text: 'text-accent-gold'
   },
   cloud: { 
-    border: 'border-terminal-purple/20 group-hover:border-terminal-purple/50', 
-    bg: 'bg-terminal-purple/10',
-    text: 'text-terminal-purple'
+    border: 'border-accent-secondary/20 group-hover:border-accent-secondary/50', 
+    bg: 'bg-accent-secondary/10',
+    text: 'text-accent-secondary'
   },
   tools: { 
-    border: 'border-terminal-pink/20 group-hover:border-terminal-pink/50', 
-    bg: 'bg-terminal-pink/10',
-    text: 'text-terminal-pink'
+    border: 'border-accent-rose/20 group-hover:border-accent-rose/50', 
+    bg: 'bg-accent-rose/10',
+    text: 'text-accent-rose'
+  },
+  ai: { 
+    border: 'border-purple-500/20 group-hover:border-purple-500/50', 
+    bg: 'bg-purple-500/10',
+    text: 'text-purple-400'
   },
 };
 
@@ -72,21 +79,24 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-12 md:py-16 relative" ref={ref}>
+    <section id="skills" className="py-20 md:py-28 relative" ref={ref}>
+      {/* Subtle Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background-light/30 to-background" />
+      
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Cleaner Section Header */}
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-8"
+          className="mb-12"
         >
-          <span className="text-terminal-cyan font-mono text-sm tracking-wider uppercase mb-2 block">
-            02. Expertise
-          </span>
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">
-            Technical <span className="text-zinc-500">Arsenal</span>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
+            Skills & <span className="text-accent-tertiary">Technologies</span>
           </h2>
+          <p className="text-slate-400 text-lg max-w-2xl">
+            The tools and technologies I use to bring ideas to life.
+          </p>
         </motion.div>
 
         {/* Skills Grid */}
@@ -119,7 +129,7 @@ export default function Skills() {
                   </div>
                 </div>
 
-                {/* Skills List - Clean Tags */}
+                {/* Skills List */}
                 <div className="flex flex-wrap gap-2">
                   {category.items.map((skill, skillIndex) => (
                     <motion.span
@@ -127,7 +137,7 @@ export default function Skills() {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ delay: index * 0.1 + skillIndex * 0.05 }}
-                      className="px-3 py-1.5 rounded-lg bg-background-light border border-border text-sm text-zinc-400 group-hover:border-zinc-600 transition-colors cursor-default"
+                      className="px-3 py-1.5 rounded-lg bg-background-light border border-border text-sm text-slate-400 group-hover:border-slate-600 transition-colors cursor-default"
                     >
                       {skill}
                     </motion.span>

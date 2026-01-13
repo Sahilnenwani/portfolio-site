@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Terminal } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { navLinks } from '@/lib/data';
 
 export default function Navbar() {
@@ -48,7 +48,7 @@ export default function Navbar() {
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-background/80 backdrop-blur-lg border-b border-border'
+            ? 'bg-background/90 backdrop-blur-lg border-b border-border'
             : 'bg-transparent'
         }`}
       >
@@ -67,15 +67,15 @@ export default function Navbar() {
                 }
               }}
               className="flex items-center gap-2 group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <Terminal className="w-6 h-6 text-terminal-green group-hover:animate-pulse" />
-              <span className="font-mono text-lg font-bold">
-                <span className="text-terminal-green">sahil</span>
-                <span className="text-terminal-cyan">@</span>
-                <span className="text-zinc-400">dev</span>
-                <span className="text-terminal-green animate-blink">_</span>
+              {/* Initials Badge */}
+              <div className="w-10 h-10 rounded-lg bg-accent-primary flex items-center justify-center">
+                <span className="text-white font-heading font-bold text-lg">SN</span>
+              </div>
+              <span className="font-heading text-lg font-semibold text-white hidden sm:block">
+                Sahil Nenwani
               </span>
             </motion.a>
 
@@ -85,10 +85,10 @@ export default function Navbar() {
                 <motion.button
                   key={link.name}
                   onClick={() => handleNavClick(link.href)}
-                  className={`px-4 py-2 font-mono text-sm transition-all duration-300 rounded-lg relative ${
+                  className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg relative ${
                     activeSection === link.href.replace('#', '')
-                      ? 'text-terminal-green'
-                      : 'text-zinc-400 hover:text-terminal-green'
+                      ? 'text-accent-primary'
+                      : 'text-slate-400 hover:text-white'
                   }`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -96,12 +96,11 @@ export default function Navbar() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className="text-terminal-cyan mr-1">{'>'}</span>
-                  {link.name.toLowerCase()}
+                  {link.name}
                   {activeSection === link.href.replace('#', '') && (
                     <motion.div
                       layoutId="activeSection"
-                      className="absolute inset-0 bg-terminal-green/10 rounded-lg -z-10"
+                      className="absolute inset-0 bg-accent-primary/10 rounded-lg -z-10"
                       transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                     />
                   )}
@@ -112,7 +111,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-zinc-400 hover:text-terminal-green transition-colors"
+              className="md:hidden p-2 text-slate-400 hover:text-white transition-colors"
               whileTap={{ scale: 0.9 }}
               aria-label="Toggle menu"
             >
@@ -148,7 +147,7 @@ export default function Navbar() {
                 <div className="flex justify-end p-4">
                   <motion.button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 text-zinc-400 hover:text-terminal-green transition-colors"
+                    className="p-2 text-slate-400 hover:text-white transition-colors"
                     whileTap={{ scale: 0.9 }}
                   >
                     <X className="w-6 h-6" />
@@ -162,31 +161,26 @@ export default function Navbar() {
                       <motion.button
                         key={link.name}
                         onClick={() => handleNavClick(link.href)}
-                        className={`w-full text-left px-4 py-3 font-mono text-lg transition-all duration-300 rounded-lg ${
+                        className={`w-full text-left px-4 py-3 text-lg font-medium transition-all duration-300 rounded-lg ${
                           activeSection === link.href.replace('#', '')
-                            ? 'text-terminal-green bg-terminal-green/10'
-                            : 'text-zinc-400 hover:text-terminal-green hover:bg-terminal-green/5'
+                            ? 'text-accent-primary bg-accent-primary/10'
+                            : 'text-slate-400 hover:text-white hover:bg-white/5'
                         }`}
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
                       >
-                        <span className="text-terminal-cyan mr-2">$</span>
-                        cd ~/{link.name.toLowerCase()}
+                        {link.name}
                       </motion.button>
                     ))}
                   </div>
                 </nav>
 
-                {/* Terminal Footer */}
+                {/* Footer */}
                 <div className="p-4 border-t border-border">
-                  <div className="font-mono text-xs text-zinc-500">
-                    <span className="text-terminal-green">visitor</span>
-                    <span className="text-zinc-500">@</span>
-                    <span className="text-terminal-cyan">portfolio</span>
-                    <span className="text-zinc-500">:~$ </span>
-                    <span className="animate-blink text-terminal-green">▋</span>
-                  </div>
+                  <p className="text-sm text-slate-500 text-center">
+                    © 2024 Sahil Nenwani
+                  </p>
                 </div>
               </div>
             </motion.div>

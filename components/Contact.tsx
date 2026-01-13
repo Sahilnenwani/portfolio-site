@@ -10,7 +10,6 @@ import {
   Linkedin,
   Twitter,
   BookOpen,
-  Terminal,
   CheckCircle2,
   AlertCircle,
   MapPin
@@ -26,10 +25,6 @@ export default function Contact() {
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-  const [terminalLines, setTerminalLines] = useState<string[]>([
-    '> Initializing contact form...',
-    '> Ready to receive messages',
-  ]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -39,24 +34,12 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
-    
-    // Simulate terminal output
-    setTerminalLines((prev) => [
-      ...prev,
-      `> Processing message from ${formState.name}...`,
-      '> Validating data...',
-    ]);
 
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    // For now, just simulate success (you can integrate with an email service later)
+    // For now, just simulate success
     setStatus('success');
-    setTerminalLines((prev) => [
-      ...prev,
-      '> Message sent successfully!',
-      '> Thank you for reaching out!',
-    ]);
 
     // Reset form after success
     setTimeout(() => {
@@ -74,65 +57,42 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-12 md:py-16 relative" ref={ref}>
-      {/* Background */}
-      <div className="absolute inset-0 grid-bg opacity-20" />
-      
+    <section id="contact" className="py-20 md:py-28 relative" ref={ref}>
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-background-card border border-border rounded-full mb-4">
-            <Send className="w-4 h-4 text-terminal-green" />
-            <span className="font-mono text-sm text-terminal-green">~/contact</span>
-          </div>
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
-            Get In <span className="text-terminal-green">Touch</span>
+            Get In <span className="text-accent-primary">Touch</span>
           </h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto font-mono text-sm">
-            <span className="text-terminal-green">$</span> ./send_message.sh --to=&quot;sahil&quot;
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            Have a project in mind or want to discuss opportunities? I&apos;d love to hear from you.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
-          {/* Contact Form - Terminal Style */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="bg-background-card border border-border rounded-xl overflow-hidden">
-              {/* Terminal Header */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-background-light border-b border-border">
-                <div className="flex gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-terminal-red" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-terminal-amber" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-terminal-green" />
-                </div>
-                <Terminal className="w-3 h-3 text-zinc-500 ml-2" />
-                <span className="font-mono text-xs text-zinc-500">contact.sh</span>
-              </div>
-
-              {/* Terminal Output */}
-              <div className="p-4 border-b border-border bg-background-light/50 font-mono text-xs max-h-24 overflow-y-auto">
-                {terminalLines.map((line, index) => (
-                  <div key={index} className="text-terminal-green">
-                    {line}
-                  </div>
-                ))}
+            <div className="bg-background-card border border-border rounded-2xl overflow-hidden">
+              {/* Form Header */}
+              <div className="px-6 py-4 bg-background-light border-b border-border">
+                <h3 className="font-heading font-semibold text-white">Send a Message</h3>
               </div>
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="p-6 space-y-5">
                 {/* Name Input */}
                 <div className="space-y-2">
-                  <label className="block font-mono text-sm text-zinc-400">
-                    <span className="text-terminal-cyan">const</span>{' '}
-                    <span className="text-terminal-amber">name</span> =
+                  <label className="block text-sm font-medium text-slate-400">
+                    Name
                   </label>
                   <input
                     type="text"
@@ -140,16 +100,15 @@ export default function Contact() {
                     value={formState.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-background-light border border-border rounded-lg font-mono text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-terminal-green transition-colors"
-                    placeholder='"Your Name"'
+                    className="w-full px-4 py-3 bg-background-light border border-border rounded-lg text-sm text-white placeholder-slate-600 focus:outline-none focus:border-accent-primary transition-colors"
+                    placeholder="Your name"
                   />
                 </div>
 
                 {/* Email Input */}
                 <div className="space-y-2">
-                  <label className="block font-mono text-sm text-zinc-400">
-                    <span className="text-terminal-cyan">const</span>{' '}
-                    <span className="text-terminal-amber">email</span> =
+                  <label className="block text-sm font-medium text-slate-400">
+                    Email
                   </label>
                   <input
                     type="email"
@@ -157,16 +116,15 @@ export default function Contact() {
                     value={formState.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-background-light border border-border rounded-lg font-mono text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-terminal-green transition-colors"
-                    placeholder='"your@email.com"'
+                    className="w-full px-4 py-3 bg-background-light border border-border rounded-lg text-sm text-white placeholder-slate-600 focus:outline-none focus:border-accent-primary transition-colors"
+                    placeholder="your@email.com"
                   />
                 </div>
 
                 {/* Message Input */}
                 <div className="space-y-2">
-                  <label className="block font-mono text-sm text-zinc-400">
-                    <span className="text-terminal-cyan">const</span>{' '}
-                    <span className="text-terminal-amber">message</span> =
+                  <label className="block text-sm font-medium text-slate-400">
+                    Message
                   </label>
                   <textarea
                     name="message"
@@ -174,8 +132,8 @@ export default function Contact() {
                     onChange={handleInputChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-3 bg-background-light border border-border rounded-lg font-mono text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-terminal-green transition-colors resize-none"
-                    placeholder='`Your message here...`'
+                    className="w-full px-4 py-3 bg-background-light border border-border rounded-lg text-sm text-white placeholder-slate-600 focus:outline-none focus:border-accent-primary transition-colors resize-none"
+                    placeholder="Your message..."
                   />
                 </div>
 
@@ -183,9 +141,9 @@ export default function Contact() {
                 <motion.button
                   type="submit"
                   disabled={status === 'sending' || status === 'success'}
-                  className={`w-full py-3 px-6 rounded-lg font-mono text-sm flex items-center justify-center gap-2 transition-all duration-300 ${
+                  className={`w-full py-3 px-6 rounded-lg text-sm font-medium flex items-center justify-center gap-2 transition-all duration-300 ${
                     status === 'success'
-                      ? 'bg-terminal-green/20 text-terminal-green border border-terminal-green'
+                      ? 'bg-accent-tertiary/20 text-accent-tertiary border border-accent-tertiary'
                       : 'btn-primary'
                   }`}
                   whileHover={{ scale: status === 'idle' ? 1.02 : 1 }}
@@ -194,12 +152,12 @@ export default function Contact() {
                   {status === 'idle' && (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>{'>'} send_message()</span>
+                      <span>Send Message</span>
                     </>
                   )}
                   {status === 'sending' && (
                     <>
-                      <div className="w-4 h-4 border-2 border-background border-t-transparent rounded-full animate-spin" />
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                       <span>Sending...</span>
                     </>
                   )}
@@ -225,14 +183,14 @@ export default function Contact() {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="space-y-4"
+            className="space-y-6"
           >
             {/* Info Card */}
-            <div className="bg-background-card border border-border rounded-xl p-6">
-              <h3 className="text-xl font-heading font-semibold text-white mb-6">
-                Let&apos;s Build Something <span className="text-terminal-green">Amazing</span>
+            <div className="bg-background-card border border-border rounded-2xl p-6">
+              <h3 className="text-xl font-heading font-semibold text-white mb-4">
+                Let&apos;s Build Something <span className="text-accent-primary">Amazing</span>
               </h3>
-              <p className="text-zinc-400 mb-6 leading-relaxed">
+              <p className="text-slate-400 mb-6 leading-relaxed">
                 I&apos;m always interested in hearing about new opportunities, 
                 challenging projects, or just having a chat about technology. 
                 Whether you need help with backend systems, distributed architectures, 
@@ -240,11 +198,11 @@ export default function Contact() {
               </p>
 
               {/* Location */}
-              <div className="flex items-center gap-3 text-zinc-400 mb-6">
-                <div className="p-2 bg-terminal-green/10 rounded-lg">
-                  <MapPin className="w-5 h-5 text-terminal-green" />
+              <div className="flex items-center gap-3 text-slate-400 mb-6">
+                <div className="p-2 bg-accent-primary/10 rounded-lg">
+                  <MapPin className="w-5 h-5 text-accent-primary" />
                 </div>
-                <span className="font-mono text-sm">{personalInfo.location}</span>
+                <span className="text-sm">{personalInfo.location}</span>
               </div>
 
               {/* Social Links */}
@@ -255,14 +213,14 @@ export default function Contact() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-3 bg-background-light border border-border rounded-lg hover:border-terminal-cyan/50 transition-all duration-300 group"
+                    className="flex items-center gap-4 p-3 bg-background-light border border-border rounded-lg hover:border-accent-tertiary/50 transition-all duration-300 group"
                     whileHover={{ x: 5 }}
                   >
-                    <div className="p-2 bg-terminal-cyan/10 rounded-lg group-hover:bg-terminal-cyan/20 transition-colors">
-                      <social.icon className="w-5 h-5 text-terminal-cyan" />
+                    <div className="p-2 bg-accent-tertiary/10 rounded-lg group-hover:bg-accent-tertiary/20 transition-colors">
+                      <social.icon className="w-5 h-5 text-accent-tertiary" />
                     </div>
                     <div>
-                      <div className="font-mono text-xs text-zinc-500">{social.label}</div>
+                      <div className="text-xs text-slate-500">{social.label}</div>
                       <div className="text-sm text-white">{social.value}</div>
                     </div>
                   </motion.a>
@@ -271,12 +229,12 @@ export default function Contact() {
             </div>
 
             {/* Availability Card */}
-            <div className="bg-gradient-to-br from-terminal-green/10 to-terminal-cyan/10 border border-terminal-green/20 rounded-xl p-6">
+            <div className="bg-gradient-to-br from-accent-primary/10 to-accent-tertiary/10 border border-accent-primary/20 rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-3 h-3 rounded-full bg-terminal-green animate-pulse" />
-                <span className="font-mono text-sm text-terminal-green">Available for opportunities</span>
+                <div className="w-3 h-3 rounded-full bg-accent-tertiary animate-pulse" />
+                <span className="text-sm font-medium text-accent-tertiary">Available for opportunities</span>
               </div>
-              <p className="text-zinc-400 text-sm">
+              <p className="text-slate-400 text-sm">
                 Currently open to full-time positions, contract work, and interesting collaborations 
                 in backend development, distributed systems, and cloud architecture.
               </p>
@@ -287,4 +245,3 @@ export default function Contact() {
     </section>
   );
 }
-

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,24 +6,21 @@
 
 @layer base {
   :root {
-    /* Dark Mode Only - Professional Tech Theme */
-    --background: #09090b; /* Zinc-950 */
-    --background-light: #18181b; /* Zinc-900 */
-    --background-card: #121215; /* Zinc-925 */
-    
-    /* Tech Accents */
-    --terminal-green: #10b981; /* Emerald-500 */
-    --terminal-cyan: #06b6d4; /* Cyan-500 */
-    --terminal-amber: #f59e0b; /* Amber-500 */
-    --terminal-purple: #8b5cf6; /* Violet-500 */
-    --terminal-red: #ef4444; /* Red-500 */
-    --terminal-pink: #ec4899; /* Pink-500 */
-    
-    --border-color: #27272a; /* Zinc-800 */
-    --text-primary: #e4e4e7; /* Zinc-200 */
-    --text-secondary: #a1a1aa; /* Zinc-400 */
-    
-    --grid-pattern: linear-gradient(to right, #27272a 1px, transparent 1px), linear-gradient(to bottom, #27272a 1px, transparent 1px);
+    /* Professional Dark Theme - Warm Slate Base */
+    --background: #0f172a; /* Slate-900 - Warmer than pure black */
+    --background-light: #1e293b; /* Slate-800 */
+    --background-card: #1e293b; /* Slate-800 */
+
+    /* Professional Accent Colors */
+    --accent-primary: #6366f1; /* Indigo-500 - Sophisticated primary */
+    --accent-secondary: #f97316; /* Orange-500 - Warm, energetic secondary */
+    --accent-tertiary: #14b8a6; /* Teal-500 - Fresh, modern */
+    --accent-gold: #f59e0b; /* Amber-500 - Premium feel */
+    --accent-rose: #f43f5e; /* Rose-500 - Attention */
+
+    --border-color: #334155; /* Slate-700 - Warmer borders */
+    --text-primary: #f1f5f9; /* Slate-100 */
+    --text-secondary: #94a3b8; /* Slate-400 */
   }
 }
 
@@ -40,7 +37,7 @@ html {
 body {
   background: var(--background);
   color: var(--text-primary);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -61,70 +58,22 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--terminal-green);
+  background: var(--accent-primary);
 }
 
 /* Selection */
 ::selection {
-  background: var(--terminal-green);
+  background: var(--accent-primary);
   color: white;
 }
 
-/* Text glow */
-.text-glow {
-  text-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
-}
-
-/* Scanlines */
-.scanlines::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.05),
-    rgba(0, 0, 0, 0.05) 1px,
-    transparent 1px,
-    transparent 2px
+/* Subtle gradient backgrounds */
+.gradient-subtle {
+  background: linear-gradient(
+    135deg,
+    var(--background) 0%,
+    var(--background-light) 100%
   );
-  pointer-events: none;
-  z-index: 10;
-}
-
-/* Grid background */
-.grid-bg {
-  background-image: var(--grid-pattern);
-  background-size: 50px 50px;
-}
-
-/* Terminal cursor blink */
-.cursor-blink::after {
-  content: '▋';
-  animation: blink 1s step-end infinite;
-  color: var(--terminal-green);
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-/* Typing effect */
-.typing-effect {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 3px solid var(--terminal-green);
-  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: var(--terminal-green); }
 }
 
 /* Hover lift effect */
@@ -136,19 +85,9 @@ body {
   transform: translateY(-5px);
 }
 
-/* Noise texture overlay */
-.noise-overlay::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 100;
-}
-
 /* Button styles */
 .btn-primary {
-  background: var(--terminal-green);
+  background: var(--accent-primary);
   color: white;
   font-weight: 500;
   padding: 12px 24px;
@@ -161,12 +100,12 @@ body {
 .btn-primary:hover {
   opacity: 0.9;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--terminal-green);
+  color: var(--accent-primary);
   border: 1px solid var(--border-color);
   font-weight: 500;
   padding: 12px 24px;
@@ -175,8 +114,8 @@ body {
 }
 
 .btn-secondary:hover {
-  border-color: var(--terminal-green);
-  background: rgba(16, 185, 129, 0.05);
+  border-color: var(--accent-primary);
+  background: rgba(99, 102, 241, 0.1);
 }
 
 /* Section styles */
@@ -195,7 +134,7 @@ pre {
 }
 
 code {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
 }
 
 /* Skill tag */
@@ -212,16 +151,35 @@ code {
 }
 
 .skill-tag:hover {
-  border-color: var(--terminal-green);
-  color: var(--terminal-green);
-  background: rgba(16, 185, 129, 0.05);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: rgba(99, 102, 241, 0.1);
 }
 
 /* Focus styles for accessibility */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--terminal-cyan);
+  outline: 2px solid var(--accent-tertiary);
   outline-offset: 2px;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
 }
 
 /* Print styles */
