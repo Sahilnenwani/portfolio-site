@@ -134,7 +134,7 @@ export default function Blog() {
   };
 
   return (
-    <section id="blog" className="py-20 md:py-28 relative" ref={ref}>
+    <section id="blog" className="py-12 md:py-16 relative" ref={ref}>
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -143,10 +143,10 @@ export default function Blog() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-4">
             Latest <span className="text-accent-rose">Articles</span> & <span className="text-accent-tertiary">Posts</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
             Thoughts on backend development, distributed systems, and software engineering.
           </p>
         </motion.div>
@@ -155,7 +155,7 @@ export default function Blog() {
         {loading && (
           <div className="flex items-center justify-center py-12">
             <Loader2 className="w-8 h-8 text-accent-primary animate-spin" />
-            <span className="ml-3 text-slate-400">Loading articles...</span>
+            <span className="ml-3 text-slate-500">Loading articles...</span>
           </div>
         )}
 
@@ -163,7 +163,7 @@ export default function Blog() {
         {error && !loading && (
           <div className="text-center py-12">
             <p className="text-slate-500 mb-4">{error}</p>
-            <p className="text-slate-600 text-sm">
+            <p className="text-slate-400 text-sm">
               Showing fallback links below
             </p>
           </div>
@@ -190,10 +190,10 @@ export default function Blog() {
                   rel="noopener noreferrer"
                   className="block h-full"
                 >
-                  <div className="h-full bg-background-card border border-border rounded-xl overflow-hidden transition-all duration-300 hover:border-accent-primary/50 hover:shadow-lg hover:shadow-accent-primary/5 flex flex-col">
+                  <div className="h-full bg-white border border-slate-200 rounded-xl overflow-hidden transition-all duration-300 hover:border-accent-primary/50 hover:shadow-xl flex flex-col">
                     {/* Article Image */}
                     {article.image && (
-                      <div className="w-full h-40 bg-background-light overflow-hidden relative">
+                      <div className="w-full h-40 bg-slate-100 overflow-hidden relative">
                         <Image 
                           src={article.image} 
                           alt={article.title}
@@ -211,21 +211,21 @@ export default function Blog() {
                         <span className="px-3 py-1 text-xs font-medium rounded-full bg-accent-primary/10 text-accent-primary border border-accent-primary/20">
                           Medium
                         </span>
-                        <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-accent-primary transition-colors" />
+                        <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-accent-primary transition-colors" />
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-lg font-heading font-semibold text-white mb-3 group-hover:text-accent-primary transition-colors line-clamp-2">
+                      <h3 className="text-lg font-heading font-semibold text-slate-900 mb-3 group-hover:text-accent-primary transition-colors line-clamp-2">
                         {article.title}
                       </h3>
 
                       {/* Excerpt */}
-                      <p className="text-slate-400 text-sm leading-relaxed line-clamp-3 mb-4">
+                      <p className="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-4">
                         {article.excerpt}
                       </p>
 
                       {/* Meta Info */}
-                      <div className="flex items-center gap-4 text-xs text-slate-500 mb-4">
+                      <div className="flex items-center gap-4 text-xs text-slate-400 mb-4">
                         <span className="flex items-center gap-1.5">
                           <Clock className="w-3.5 h-3.5" />
                           {article.readTime}
@@ -239,7 +239,7 @@ export default function Blog() {
                           {article.tags.slice(0, 3).map((tag) => (
                             <span
                               key={tag}
-                              className="flex items-center gap-1 px-2 py-0.5 text-xs bg-accent-primary/10 text-accent-primary rounded"
+                              className="flex items-center gap-1 px-2 py-0.5 text-xs bg-accent-primary/5 text-accent-primary/80 rounded"
                             >
                               <Tag className="w-2.5 h-2.5" />
                               {tag}
@@ -250,8 +250,8 @@ export default function Blog() {
                     </div>
 
                     {/* Read More */}
-                    <div className="px-6 py-4 border-t border-border bg-background-light/50">
-                      <span className="flex items-center gap-2 text-sm text-slate-400 group-hover:text-accent-primary transition-colors">
+                    <div className="px-6 py-4 border-t border-slate-100 bg-slate-50/50">
+                      <span className="flex items-center gap-2 text-sm text-slate-500 group-hover:text-accent-primary transition-colors">
                         <span>Read article</span>
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </span>
@@ -274,7 +274,7 @@ export default function Blog() {
                   rel="noopener noreferrer"
                   className="block h-full"
                 >
-                  <div className="h-full bg-background-card border border-border rounded-xl overflow-hidden transition-all duration-300 hover:border-accent-tertiary/50 hover:shadow-lg hover:shadow-accent-tertiary/5 flex flex-col">
+                  <div className="h-full bg-white border border-slate-200 rounded-xl overflow-hidden transition-all duration-300 hover:border-accent-tertiary/50 hover:shadow-xl flex flex-col">
                     {/* Post Header */}
                     <div className="p-6 flex-1">
                       {/* Platform Badge */}
@@ -282,21 +282,21 @@ export default function Blog() {
                         <span className="px-3 py-1 text-xs font-medium rounded-full bg-accent-tertiary/10 text-accent-tertiary border border-accent-tertiary/20">
                           Twitter
                         </span>
-                        <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-accent-tertiary transition-colors" />
+                        <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-accent-tertiary transition-colors" />
                       </div>
 
                       {/* Tweet Text */}
-                      <p className="text-slate-300 text-sm leading-relaxed mb-4 line-clamp-4">
+                      <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-4">
                         {truncateText(post.text, 200)}
                       </p>
 
                       {/* Date */}
-                      <div className="text-xs text-slate-500 mb-4">
+                      <div className="text-xs text-slate-400 mb-4">
                         {formatTwitterDate(post.date)}
                       </div>
 
                       {/* Engagement Metrics */}
-                      <div className="flex items-center gap-4 text-xs text-slate-500">
+                      <div className="flex items-center gap-4 text-xs text-slate-400">
                         <span className="flex items-center gap-1.5">
                           <Heart className="w-3.5 h-3.5" />
                           {post.likes > 0 ? post.likes : '—'}
@@ -313,8 +313,8 @@ export default function Blog() {
                     </div>
 
                     {/* Read More */}
-                    <div className="px-6 py-4 border-t border-border bg-background-light/50">
-                      <span className="flex items-center gap-2 text-sm text-slate-400 group-hover:text-accent-tertiary transition-colors">
+                    <div className="px-6 py-4 border-t border-slate-100 bg-slate-50/50">
+                      <span className="flex items-center gap-2 text-sm text-slate-500 group-hover:text-accent-tertiary transition-colors">
                         <span>View on Twitter</span>
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </span>
@@ -347,7 +347,7 @@ export default function Blog() {
               href={personalInfo.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-background-card border border-border rounded-xl text-sm text-slate-400 hover:text-accent-primary hover:border-accent-primary/50 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 rounded-xl text-sm text-slate-600 hover:text-accent-primary hover:border-accent-primary/50 hover:shadow-lg transition-all duration-300"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -359,7 +359,7 @@ export default function Blog() {
               href={personalInfo.twitter}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-background-card border border-border rounded-xl text-sm text-slate-400 hover:text-accent-tertiary hover:border-accent-tertiary/50 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 rounded-xl text-sm text-slate-600 hover:text-accent-tertiary hover:border-accent-tertiary/50 hover:shadow-lg transition-all duration-300"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >

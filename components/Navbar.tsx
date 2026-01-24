@@ -48,7 +48,7 @@ export default function Navbar() {
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-background/90 backdrop-blur-lg border-b border-border'
+            ? 'bg-white/80 backdrop-blur-xl border-b border-slate-200/50 shadow-sm'
             : 'bg-transparent'
         }`}
       >
@@ -70,11 +70,11 @@ export default function Navbar() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* Initials Badge */}
-              <div className="w-10 h-10 rounded-lg bg-accent-primary flex items-center justify-center">
+              {/* Initials Badge with gradient */}
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-primary to-purple-500 flex items-center justify-center shadow-lg shadow-accent-primary/25">
                 <span className="text-white font-heading font-bold text-lg">SN</span>
               </div>
-              <span className="font-heading text-lg font-semibold text-white hidden sm:block">
+              <span className="font-heading text-lg font-semibold text-slate-800 hidden sm:block">
                 Sahil Nenwani
               </span>
             </motion.a>
@@ -88,7 +88,7 @@ export default function Navbar() {
                   className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg relative ${
                     activeSection === link.href.replace('#', '')
                       ? 'text-accent-primary'
-                      : 'text-slate-400 hover:text-white'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -111,7 +111,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-slate-400 hover:text-white transition-colors"
+              className="md:hidden p-2 text-slate-600 hover:text-slate-900 transition-colors"
               whileTap={{ scale: 0.9 }}
               aria-label="Toggle menu"
             >
@@ -131,7 +131,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-slate-900/20 backdrop-blur-sm z-40 md:hidden"
             />
 
             {/* Menu Panel */}
@@ -140,14 +140,14 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-background-light border-l border-border z-50 md:hidden"
+              className="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-white border-l border-slate-200 shadow-2xl z-50 md:hidden"
             >
               <div className="flex flex-col h-full">
                 {/* Close Button */}
                 <div className="flex justify-end p-4">
                   <motion.button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 text-slate-400 hover:text-white transition-colors"
+                    className="p-2 text-slate-500 hover:text-slate-700 transition-colors"
                     whileTap={{ scale: 0.9 }}
                   >
                     <X className="w-6 h-6" />
@@ -161,10 +161,10 @@ export default function Navbar() {
                       <motion.button
                         key={link.name}
                         onClick={() => handleNavClick(link.href)}
-                        className={`w-full text-left px-4 py-3 text-lg font-medium transition-all duration-300 rounded-lg ${
+                        className={`w-full text-left px-4 py-3 text-lg font-medium transition-all duration-300 rounded-xl ${
                           activeSection === link.href.replace('#', '')
                             ? 'text-accent-primary bg-accent-primary/10'
-                            : 'text-slate-400 hover:text-white hover:bg-white/5'
+                            : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                         }`}
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -177,8 +177,8 @@ export default function Navbar() {
                 </nav>
 
                 {/* Footer */}
-                <div className="p-4 border-t border-border">
-                  <p className="text-sm text-slate-500 text-center">
+                <div className="p-4 border-t border-slate-100">
+                  <p className="text-sm text-slate-400 text-center">
                     © 2024 Sahil Nenwani
                   </p>
                 </div>

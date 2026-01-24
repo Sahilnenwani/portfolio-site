@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -35,6 +34,9 @@ const config: Config = {
         "slide-up": "slide-up 0.5s ease-out",
         "fade-in": "fade-in 0.5s ease-out",
         "pulse-slow": "pulse 3s ease-in-out infinite",
+        blob: "blob-float 20s ease-in-out infinite",
+        shimmer: "shimmer 2s infinite",
+        "gradient-x": "gradient-x 3s ease infinite",
       },
       keyframes: {
         float: {
@@ -49,9 +51,30 @@ const config: Config = {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        "blob-float": {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "25%": { transform: "translate(20px, -30px) scale(1.05)" },
+          "50%": { transform: "translate(-20px, 20px) scale(0.95)" },
+          "75%": { transform: "translate(30px, 10px) scale(1.02)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        "gradient-x": {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(var(--tw-gradient-stops))",
+      },
+      boxShadow: {
+        glow: "0 0 40px rgba(99, 102, 241, 0.15)",
+        "glow-lg": "0 0 60px rgba(99, 102, 241, 0.2)",
+        premium: "0 4px 20px rgba(0, 0, 0, 0.04)",
+        "premium-lg": "0 20px 40px rgba(0, 0, 0, 0.08)",
       },
     },
   },

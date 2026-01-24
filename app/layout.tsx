@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
+import FloatingShapes from '@/components/FloatingShapes';
+import ClientWrapper from '@/components/ClientWrapper';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -58,14 +60,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${spaceGrotesk.variable} ${inter.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <head>
         <link rel="icon" type="image/png" href="/icon.png" />
         <link rel="apple-touch-icon" href="/icon.png" />
-        <meta name="theme-color" content="#0f172a" />
+        <meta name="theme-color" content="#fafbfc" />
       </head>
-      <body className="bg-background text-slate-100 antialiased">
-        {children}
+      <body className="bg-background text-slate-900 antialiased">
+        <FloatingShapes />
+        <ClientWrapper>
+          {children}
+        </ClientWrapper>
       </body>
     </html>
   );
